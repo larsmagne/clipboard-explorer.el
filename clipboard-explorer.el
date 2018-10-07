@@ -53,7 +53,7 @@
   "Major mode for listing selection and clipboard contents.
 
 All normal editing commands are switched off.
-\\<ewp-mode-map>"
+\\<clipboard-explorer-mode>"
   (buffer-disable-undo)
   (setq truncate-lines t
 	buffer-read-only t))
