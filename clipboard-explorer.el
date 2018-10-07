@@ -16,6 +16,9 @@
 
 ;;; Commentary:
 
+;; To use, say `M-x explore-clipboard' and hit RET on whatever
+;; selection looks interesting.
+
 ;;; Code:
 
 (require 'cl)
