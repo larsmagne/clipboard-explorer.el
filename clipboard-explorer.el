@@ -96,7 +96,11 @@ All normal editing commands are switched off.
        'utf-8)))
    ((string-match "^image/" (symbol-name selection))
     (with-temp-buffer
-      (insert-image (create-image elem 'imagemagick t :max-width 500))
+      (insert-image (create-image elem
+				  (intern (cadr (split-string
+						 (symbol-name selection)
+						 "/")))
+				  t :max-width 500))
       (buffer-string)))
    (t
     elem)))
