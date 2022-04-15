@@ -30,15 +30,15 @@
   (let ((inhibit-read-only t))
     (erase-buffer)
     (clipboard-explorer-mode)
-    (loop for type in '(PRIMARY SECONDARY CLIPBOARD)
-	  do (insert (format "%s ->\n" type))
-	  (loop for selection across (gui-get-selection type 'TARGETS)
-		when (and (not (memq selection '(MULTIPLE DELETE)))
-			  (x-get-selection-internal type selection))
-		do (insert
-		    (propertize
-		     (format "    %s\n" selection)
-		     'data (list type selection)))))
+    (cl-loop for type in '(PRIMARY SECONDARY CLIPBOARD)
+	     do (insert (format "%s ->\n" type))
+	     (cl-loop for selection across (gui-get-selection type 'TARGETS)
+		      when (and (not (memq selection '(MULTIPLE DELETE)))
+				(x-get-selection-internal type selection))
+		      do (insert
+			  (propertize
+			   (format "    %s\n" selection)
+			   'data (list type selection)))))
     (goto-char (point-min))))
 
 (defvar clipboard-explorer-mode-map
